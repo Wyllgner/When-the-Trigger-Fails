@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.claude/
+
+# paper drafts and writing notes (not part of the artifact)
+*.txt
+!requirements.txt
+*.tex
+ARTIGO_COMPLETO.txt
+ESTRUTURA_ARTIGO.md
+EXECUCAO_2_DIAS.md
+INTRODUCAO.md
+PLANEJAMENTO_ARTIGO.md
+REFERENCIAS.md
+RESULTADOS.md
+teste.py
