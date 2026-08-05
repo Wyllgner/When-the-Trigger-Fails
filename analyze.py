@@ -115,13 +115,13 @@ def main():
     pivot["evaluable"] = stable.astype(int)
 
     # Table 1: MVR per model x MR
-    print("\n=== Tabela 1 — MVR (taxa de violacao) por modelo x MR ===")
+    print("\n=== Tabela 1: MVR (taxa de violacao) por modelo x MR ===")
     t1 = pivot[stable].groupby(level="model")[["viol_mr1", "viol_mr2", "viol_mr3"]].mean()
     print((t1 * 100).round(1).astype(str) + "%")
     t1.to_csv("tabela1_mvr.csv")
 
     # Table 2: MR0 flakiness
-    print("\n=== Tabela 2 — Flakiness MR0 (media de assinaturas distintas; % tarefas flaky) ===")
+    print("\n=== Tabela 2: Flakiness MR0 (media de assinaturas distintas; % tarefas flaky) ===")
     t2 = pivot.groupby(level="model")["flaky"].agg(
         media_assinaturas="mean",
         pct_flaky=lambda s: (s > 1).mean())
@@ -132,7 +132,7 @@ def main():
     df["tipo"] = df.apply(lambda r: classify(
         r["tool_called"], r["args_called"], r["expected_tool"],
         r["expected_args"], r.get("raw")), axis=1)
-    print("\n=== Tabela 3 — Tipos de inconsistencia (chamadas em mr1/mr2/mr3) ===")
+    print("\n=== Tabela 3: Tipos de inconsistencia (chamadas em mr1/mr2/mr3) ===")
     mrx = df[df.mr.isin(["mr1", "mr2", "mr3"])]
     t3 = mrx.groupby(["model", "tipo"]).size().unstack(fill_value=0)
     print(t3)
@@ -153,13 +153,13 @@ def main():
             sa, sb = sa[mask], sb[mask]
             if (sa - sb).abs().sum() > 0:
                 stat, p = wilcoxon(sa, sb)
-                print(f"\n=== RQ4 — Wilcoxon {a} vs {b} ===")
+                print(f"\n=== RQ4: Wilcoxon {a} vs {b} ===")
                 print(f"  n_pares={mask.sum()} | stat={stat:.3f} | p={p:.4f}")
                 print(f"  MVR medio: {a}={sa.mean():.3f} | {b}={sb.mean():.3f}")
             else:
                 print("\n[RQ4] Sem diferenca entre modelos (todas as diffs sao zero).")
         except ImportError:
-            print("\n[RQ4] scipy nao instalado — pulei Wilcoxon.")
+            print("\n[RQ4] scipy nao instalado, pulei Wilcoxon.")
 
     # chart
     try:
@@ -174,7 +174,7 @@ def main():
         plt.savefig("mvr.png", dpi=200)
         print("\nGrafico salvo em mvr.png")
     except ImportError:
-        print("\n[grafico] matplotlib nao instalado — pulei mvr.png.")
+        print("\n[grafico] matplotlib nao instalado, pulei mvr.png.")
 
     print("\nCSVs: tabela1_mvr.csv, tabela2_flakiness.csv, tabela3_tipos.csv")
 
