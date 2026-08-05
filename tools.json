@@ -1,0 +1,123 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_weather",
+      "description": "Get the current weather conditions for a given city.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {"type": "string", "description": "Name of the city, e.g. 'Recife'"},
+          "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "Temperature unit"}
+        },
+        "required": ["city"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "send_email",
+      "description": "Send an email message to a recipient.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "to": {"type": "string", "description": "Recipient email address"},
+          "subject": {"type": "string", "description": "Email subject line"},
+          "body": {"type": "string", "description": "Email body text"}
+        },
+        "required": ["to", "body"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_web",
+      "description": "Search the public web for information about a topic and return results.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {"type": "string", "description": "The search query"}
+        },
+        "required": ["query"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_calendar_event",
+      "description": "Create a new event in the user's calendar.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string", "description": "Title of the event"},
+          "date": {"type": "string", "description": "Date of the event, e.g. '2026-07-01'"},
+          "time": {"type": "string", "description": "Start time, e.g. '15:00'"}
+        },
+        "required": ["title", "date"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "convert_currency",
+      "description": "Convert an amount of money from one currency to another.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "amount": {"type": "number", "description": "Amount to convert"},
+          "from_currency": {"type": "string", "description": "Source currency code, e.g. 'USD'"},
+          "to_currency": {"type": "string", "description": "Target currency code, e.g. 'BRL'"}
+        },
+        "required": ["amount", "from_currency", "to_currency"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "translate_text",
+      "description": "Translate a piece of text from one language to another.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "text": {"type": "string", "description": "Text to translate"},
+          "target_language": {"type": "string", "description": "Target language, e.g. 'Spanish'"}
+        },
+        "required": ["text", "target_language"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_stock_price",
+      "description": "Get the current stock market price for a company ticker symbol.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "ticker": {"type": "string", "description": "Stock ticker symbol, e.g. 'AAPL'"}
+        },
+        "required": ["ticker"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "set_reminder",
+      "description": "Set a personal reminder for the user at a given time.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "task": {"type": "string", "description": "What to be reminded about"},
+          "time": {"type": "string", "description": "When to be reminded, e.g. '18:00' or 'tomorrow morning'"}
+        },
+        "required": ["task", "time"]
+      }
+    }
+  }
+]
