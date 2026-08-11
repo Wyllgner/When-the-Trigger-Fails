@@ -68,9 +68,10 @@ transformation.
 | `noise.py` | deterministic noise generator used by `mr2` (fixed seed) |
 | `build_variations.py` | builds `variations.jsonl` from the tasks and paraphrases |
 | `run_experiment.py` | execution harness: calls the agent and logs every invocation |
-| `analyze.py` | comparator and metrics: Tables 1 to 3, Wilcoxon test, `mvr.png` |
+| `analyze.py` | comparator and metrics: all tables, severity classification, Wilson and bootstrap intervals, Wilcoxon test, charts |
 | `inspect_violations.py` | qualitative inspection of each real violation |
 | `smoke_test.py` | minimal check that Ollama and tool-calling are working |
+| `env_report.py` | records the environment (model digests, versions) into `ENVIRONMENT.md`; run it when replicating, to pin the weights you actually used |
 
 ### Outputs (results reported in the paper)
 
@@ -82,8 +83,13 @@ transformation.
 | `tabela1_mvr.csv` | Table 1: violation rate (MVR) per model and MR |
 | `tabela2_flakiness.csv` | Table 2: intrinsic flakiness under `mr0` |
 | `tabela3_tipos.csv` | Table 3: inconsistency types |
+| `tabela1b_mvr_ic.csv` | strict MVR and defect MVR with 95% Wilson intervals |
+| `tabela4_severidade.csv` | one row per violation: divergent keys, argument class, cause, severity |
+| `tabela5_funil.csv` | funnel from the raw calls down to the violations |
 | `inspecao.csv` | violations exported for manual annotation of the cause |
 | `mvr.png` | violation rate chart |
+| `mvr_severidade.png` | strict MVR vs. defect MVR, with confidence intervals |
+| `ENVIRONMENT.md` | environment of our run: date, decoding parameters, hardware, package versions (see the note on model digests) |
 
 Each line of `results.jsonl` records `model`, `task_id`, `mr`, `rep`, the exact
 `input` sent to the agent, the `tool_called` and `args_called`, the expected
@@ -148,6 +154,8 @@ Expected output, ending with the Wilcoxon test and the regenerated `mvr.png`:
 ```
 Lido results.jsonl: 1600 chamadas | modelos=['llama3.2:3b', 'qwen3.5:4b']
 
+Violacoes detectadas (tarefas estaveis em MR0): 27
+
 === Tabela 1: MVR (taxa de violacao) por modelo x MR ===
             viol_mr1 viol_mr2 viol_mr3
 model
@@ -207,4 +215,17 @@ code and the accompanying data files.
 
 ## Citation
 
-Coming soon.
+If you use this artifact, please cite the paper:
+
+```bibtex
+@inproceedings{amorim2026trigger,
+  author    = {Amorim, Wyllgner},
+  title     = {When the Trigger Fails: Metamorphic Testing of Tool-Calling AI Agents},
+  booktitle = {Proceedings of the XI Brazilian Symposium on Systematic and Automated
+               Software Testing (SAST 2026), CBSoft},
+  year      = {2026}
+}
+```
+
+The archived version of this artifact is deposited on Zenodo:
+**DOI:** `10.5281/zenodo.XXXXXXX` *(to be filled in after deposit)*

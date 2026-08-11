@@ -16,3 +16,8 @@ REFERENCIAS.md
 RESULTADOS.md
 teste.py
 *.bib
+*.zip
+
+# paper build artefacts (only paper.pdf, the camera-ready, is part of the artifact)
+*.pdf
+!paper.pdf

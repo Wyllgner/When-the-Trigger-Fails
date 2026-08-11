@@ -1,0 +1,3 @@
+model,invocacoes,chamadas_sob_transformacao,desvios_do_ground_truth,desvios_em_tarefas_mr0_estaveis,casos_tarefa_x_mr_afetados,casos_avaliaveis,casos_com_desvio_minoritario,violacoes_estritas,violacoes_defeito,S0,S1,S2
+llama3.2:3b,800,600,233,99,36,81,21,15,7,8,3,4
+qwen3.5:4b,800,600,194,72,22,84,10,12,2,10,1,1
