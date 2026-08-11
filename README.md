@@ -219,7 +219,7 @@ If you use this artifact, please cite the paper:
 
 ```bibtex
 @inproceedings{amorim2026trigger,
-  author    = {Amorim, Wyllgner},
+  author    = {Amorim, Wyllgner Fran\c{c}a de},
   title     = {When the Trigger Fails: Metamorphic Testing of Tool-Calling AI Agents},
   booktitle = {Proceedings of the XI Brazilian Symposium on Systematic and Automated
                Software Testing (SAST 2026), CBSoft},
@@ -228,4 +228,4 @@ If you use this artifact, please cite the paper:
 ```
 
 The archived version of this artifact is deposited on Zenodo:
-**DOI:** `10.5281/zenodo.XXXXXXX` *(to be filled in after deposit)*
+**DOI:** [10.5281/zenodo.21880739](https://doi.org/10.5281/zenodo.21880739)
